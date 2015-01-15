@@ -67,29 +67,89 @@ var sentence = "Dev Mountain is the best"
 
   //code here
 
-var longest = function(sent) {
+var longest = function (sent) {
+	var longestWord = ['a'];
 	var arr = sent.split(' ');
 	for (var i = 0; i < arr.length; i++) {
-		return Math.max(arr[i].length);
+		if (arr[i].length > longestWord[0].length) {
+			longestWord.splice(0,1);
+			longestWord.push(arr[i]);
+		}
 	}
-};
+	return longestWord[0];
+}
+
+longest(sentence);
+
+
+
+//Alternative nonsense that works
+// var longest = function(sent) {
+// 	var arr = sent.split(' ');
+// 	var num = [];
+// 	for (var i = 0; i < arr.length; i++) {
+// 		var char = arr[i].length;
+// 		num.push(char);
+// 	}
+// 	var max = Math.max.apply(Math, num);
+// 	var place = num.indexOf(max);
+// 	var word = arr.slice(place, place + 1);
+// 	return word;
+// };
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
-
 
 //write a function called capitalize that takes in the myPoem variable and capitalizes every word 
 var myPoem = 'What is a jQuery but a misunderstood object?'
 //What is a jQuery but a misunderstood object? --> What Is A JQuery But A Misunderstood Object?
-
   //code here
 
+var capitalize = function (str) {
+	var arr = str.split(' ');
+	var arrNew = [];
+	for (var i = 0; i < arr.length; i++) {
+		arrNew.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1));
+	}
+	return arrNew.join(' ');
+}
 
+capitalize(myPoem);
+
+
+
+var capitalize = function(words) {
+	var arr = words.split(" ");
+	var capArr = [];
+	for (var i = 0; i < 1; i++) {
+		var word = arr[i].charAt(0).toUpperCase() + arr.slice(0);
+		capArr.push(word);
+	}
+	var newSent = capArr.join(' ');
+	return newSent;
+}
+
+capitalize(myPoem);
+
+ 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
-
 var theOdyssey = "function expression or function declaration? Tis an obvious choice";
 //Write a function called vowelCounter that takes in a string (theOdyssey) and returns how many vowels are in that string.
+
+var vowelCounter = function(str) {
+	var arr = str.split('');
+	var total = [];
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] === 'a' || arr[i] === 'e' || arr[i] === 'i' || arr[i] === 'o' || arr[i] === 'u') {
+			total.push(arr[i]);
+		}
+	}
+	var count = total.length;
+	return count;
+}
+
+vowelCounter(theOdyssey);
+
+

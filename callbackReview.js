@@ -1,32 +1,31 @@
 /* Declare and Define the functions here that will make the function calls below work properly */
 
-
+var first = function(arr, callback) {
+  return callback(arr[0]);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
   console.log('The first name in names is ', firstName)
 });
 
-
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
-
+var last = function(arr, callback) {
+  return callback(arr[arr.length - 1]);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
   console.log('The last name in names is ', lastName);
 });
 
-
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
-
 //have the contains function return a boolean value for if the name is in the array or not.
 
+var contains = function(str, arr, callback) {
+  callback(arr.indexOf(str) !== -1);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains('Colt', names, function(yes){
@@ -37,12 +36,16 @@ contains('Colt', names, function(yes){
   }
 });
 
-
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 
+//NEED HELP!!
+
+var map = function(arr, callback) {
+  var newArr = [];
+  newArr = arr.slice(0);
+  callback(newArr[i]); //returns the original array numbers to map
+};
 
 
 var numbers = [1,2,3,4,5];
@@ -51,12 +54,17 @@ map(numbers, function(num){
   return num * 2; //returns an array of [2,4,6,8,10]
 });
 
-
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var uniq = function(arr, callback) {
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (newArr.indexOf(arr[i]) === -1) {  //if it's not in newArr, then push it
+      newArr.push(arr[i]);
+    }
+  }
+  callback(newArr);
+};
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -64,26 +72,33 @@ uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
 
-
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
-
+var each = function(arr, callback) {
+  for (var i = 0; i < arr.length; i++) {
+    var indice = i;
+    var item = arr[i];
+    callback(item, indice);
+  }
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + 'position is ' + item)
+  console.log('The item in the ' + indice + ' position is ' + item)
 });
-
-
-
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
+var getUserById = function(id, arr, callback) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].id === id) {
+      callback(arr[i]);
+    }
+  }
+}
 
-
+// Not sure this is the best way. Any way to reference .id without stating it?? what about
+// a for..in loop inside of the for loop? How would i reference the object inside of the array?
 
 var users = [
   {
@@ -106,7 +121,7 @@ var users = [
   },
 ];
 getUserById('16t', users, function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + 'the name of ' + user.name + ' and the address of ' + user.address); 
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
 
 
@@ -114,6 +129,13 @@ getUserById('16t', users, function(user){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
+//DONT KNOW WHAT TO DO
+
+var find = function(arr, callback) {
+  for (var i = 0; i < arr.length; i++) {
+    callback(arr[i]) //How do you access the formula to check if its truthy and remain a callback?
+  }
+};
 
 
 
@@ -122,3 +144,14 @@ var numbers  = [1, 2, 3, 4, 5, 6];
 find(numbers, function(num){ 
   return num % 2 == 0; //should return 2
 })
+
+
+
+
+
+
+
+
+
+
+
